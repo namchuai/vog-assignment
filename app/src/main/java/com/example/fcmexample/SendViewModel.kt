@@ -31,23 +31,27 @@ class SendViewModel(app: Application) : AndroidViewModel(app) {
     fun sendNotification() {
         val title = title.value
         if (title.isNullOrBlank()) {
-            sendNotificationMessage.value = "Title is empty"
+            sendNotificationMessage.value =
+                getApplication<BaseApplication>().getString(R.string.title_empty)
             return
         }
 
         val body = body.value
         if (body.isNullOrBlank()) {
-            sendNotificationMessage.value = "Please enter body"
+            sendNotificationMessage.value =
+                getApplication<BaseApplication>().getString(R.string.body_empty)
             return
         }
 
         val topic = topic.value
         if (topic.isNullOrBlank()) {
-            sendNotificationMessage.value = "Please enter topic"
+            sendNotificationMessage.value =
+                getApplication<BaseApplication>().getString(R.string.topic_empty)
             return
         }
 
         val type = if (sendDataMessage.value!!) MessageType.DATA else MessageType.NOTIFICATION
+
         viewModelScope.launch {
             sharedPreferences.getString(TOKEN, "")?.let {
                 if (it.isNotEmpty()) {
@@ -59,17 +63,19 @@ class SendViewModel(app: Application) : AndroidViewModel(app) {
                         .build()
                         .sendTo(it)
                     onResponse(response)
+                } else {
+                    sendNotificationMessage.value =
+                        getApplication<BaseApplication>().getString(R.string.empty_token)
                 }
             }
         }
     }
 
     private fun onResponse(response: FCMResponse) {
-        if (response.success == 1) {
-            sendNotificationMessage.value = "Notification sent!"
-            return
-        }
+        val message = if (response.success == 1)
+            getApplication<BaseApplication>().getString(R.string.send_failed_unknown)
+        else getApplication<BaseApplication>().getString(R.string.notification_sent)
 
-        sendNotificationMessage.value = "Notification failed to send!"
+        sendNotificationMessage.value = message
     }
 }

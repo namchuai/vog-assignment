@@ -8,5 +8,12 @@
     <string name="title">Title</string>
     <string name="body">Body</string>
     <string name="topic">Topic</string>
+    <string name="notification_sent">Notification sent!</string>
 
+    <!--some error messages-->
+    <string name="title_empty">Title cannot be empty!</string>
+    <string name="body_empty">Body cannot be empty!</string>
+    <string name="topic_empty">Topic cannot be empty!</string>
+    <string name="empty_token">Send failed! Device token is empty!</string>
+    <string name="send_failed_unknown">Notification failed to send!</string>
 </resources>
