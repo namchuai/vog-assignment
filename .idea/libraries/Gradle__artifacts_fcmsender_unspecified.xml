@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: artifacts:fcmsender:unspecified">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/fcmsender/build/.transforms/efb3749a611de695b495a3dfc86e185d/transformed/jetified-fcmsender-release/res" />
+      <root url="file://$PROJECT_DIR$/fcmsender/build/.transforms/ea0efd59c5f833b8835d12e741356a69/transformed/jetified-fcmsender-release/res" />
+      <root url="file://$PROJECT_DIR$/fcmsender/build/.transforms/efb3749a611de695b495a3dfc86e185d/transformed/jetified-fcmsender-release/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/fcmsender/build/.transforms/efb3749a611de695b495a3dfc86e185d/transformed/jetified-fcmsender-release/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
