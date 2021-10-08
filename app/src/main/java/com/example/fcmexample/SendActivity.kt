@@ -25,24 +25,27 @@ class SendActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_send)
 
+        setUpToolBar()
+        setUpViewModel()
+    }
+
+    private fun setUpToolBar() {
         val actionBar: ActionBar? = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
+    }
 
+    private fun setUpViewModel() {
         viewModel = ViewModelProvider(
             this,
             ViewModelProvider.AndroidViewModelFactory(application)
         )[SendViewModel::class.java]
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_send)
-
         binding.apply {
             lifecycleOwner = this@SendActivity
             viewModel = this@SendActivity.viewModel
             onSendClick = View.OnClickListener { this@SendActivity.viewModel.sendNotification() }
         }
-
         viewModel.apply {
             sendNotificationMessage.observe(this@SendActivity, { message ->
                 Snackbar.make(
